@@ -1,0 +1,17 @@
+{
+  "id": "01-boost-meter",
+  "title": "Boost Meter",
+  "language": "cpp",
+  "topic": "loops & conditionals",
+  "difficulty": 1,
+  "starterFile": "main.cpp",
+  "prompt": "Your car starts a kickoff with **33 boost**. Boost can never go above **100** or below **0**.\n\nInput: the first line is `n`, the number of events. Each of the next `n` lines is one event:\n- `pad X`: you picked up a pad worth `X` boost (12 for small, 100 for big)\n- `use X`: you tried to spend `X` boost (you can't spend more than you have)\n\nPrint the boost amount after every event, one per line.",
+  "tests": [
+    { "name": "small pads", "input": "3\npad 12\npad 12\npad 12\n", "expected": "45\n57\n69\n" },
+    { "name": "big pad caps at 100", "input": "2\npad 100\npad 12\n", "expected": "100\n100\n" },
+    { "name": "can't go negative", "input": "2\nuse 20\nuse 50\n", "expected": "13\n0\n" },
+    { "name": "no events", "input": "0\n", "expected": "" },
+    { "name": "mixed", "input": "5\nuse 33\npad 100\nuse 60\npad 12\nuse 100\n", "expected": "0\n100\n40\n52\n0\n", "hidden": true }
+  ],
+  "tutorNotes": "Trains clamping and reading structured input with cin >> word >> number. Common mistakes: clamping only on one side, clamping after printing instead of before, starting at 0 instead of 33, using getline then failing to parse. A clean solution uses std::min/std::max or std::clamp (C++17)."
+}

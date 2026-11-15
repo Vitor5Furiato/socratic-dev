@@ -1,0 +1,17 @@
+{
+  "id": "03-top-scorer",
+  "title": "MVP Calculator",
+  "language": "cpp",
+  "topic": "maps & structs",
+  "difficulty": 3,
+  "starterFile": "main.cpp",
+  "prompt": "After a tournament you get a log of every goal.\n\nInput: first line `n`, then `n` lines, each with a player name (no spaces) and the points that goal was worth. The same player shows up many times.\n\nOutput: one line per player, sorted by **total points, highest first**. Break ties by name in alphabetical order. Format: `name total`.",
+  "tests": [
+    { "name": "one player", "input": "2\nSquishy 100\nSquishy 50\n", "expected": "Squishy 150\n" },
+    { "name": "sorting", "input": "3\nAlpha 10\nBravo 30\nAlpha 5\n", "expected": "Bravo 30\nAlpha 15\n" },
+    { "name": "tie goes alphabetical", "input": "4\nZen 20\nArsenal 10\nArsenal 10\nVatira 5\n", "expected": "Arsenal 20\nZen 20\nVatira 5\n" },
+    { "name": "empty", "input": "0\n", "expected": "" },
+    { "name": "big totals", "input": "3\nJstn 2000000000\nJstn 2000000000\nGarrett 1\n", "expected": "Jstn 4000000000\nGarrett 1\n", "hidden": true }
+  ],
+  "tutorNotes": "Trains std::map/std::unordered_map accumulation, copying into a vector of pairs, and std::sort with a custom comparator (lambda). The hidden test overflows a 32-bit int: totals need long long. If they fail only the hidden test, ask what the largest total could be and what range int has. Common comparator mistake: using >= (not a strict weak ordering)."
+}

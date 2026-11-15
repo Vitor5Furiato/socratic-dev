@@ -1,0 +1,17 @@
+{
+  "id": "01-digit-sum",
+  "title": "Digit Sum",
+  "language": "csharp",
+  "topic": "loops & arithmetic",
+  "difficulty": 1,
+  "starterFile": "Program.cs",
+  "prompt": "Input: one integer per line, until the input ends. Integers can be negative and fit in a `long`.\n\nFor each one, print the sum of its digits (ignore the minus sign).\n\nExample: `-472` → `13`",
+  "tests": [
+    { "name": "basic", "input": "123\n", "expected": "6\n" },
+    { "name": "negative", "input": "-472\n", "expected": "13\n" },
+    { "name": "zero", "input": "0\n", "expected": "0\n" },
+    { "name": "several lines", "input": "9\n99\n999\n", "expected": "9\n18\n27\n" },
+    { "name": "long min", "input": "-9223372036854775808\n", "expected": "89\n", "hidden": true }
+  ],
+  "tutorNotes": "Trains Console.ReadLine() loops until null, long.Parse, % 10 and / 10. Hidden test is long.MinValue: Math.Abs(long.MinValue) throws OverflowException. Good fixes: work with the remainder's absolute value per digit (Math.Abs(n % 10)), or process the string's digit characters. If only the hidden test fails, ask what Math.Abs returns for the most negative long. Also watch for an infinite loop when n is negative and the loop condition is n > 0 (it just skips) vs n != 0."
+}

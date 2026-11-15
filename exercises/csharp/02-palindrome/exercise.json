@@ -1,0 +1,17 @@
+{
+  "id": "02-palindrome",
+  "title": "Palindrome Callouts",
+  "language": "csharp",
+  "topic": "strings",
+  "difficulty": 2,
+  "starterFile": "Program.cs",
+  "prompt": "For each input line, print `YES` if it is a palindrome and `NO` otherwise.\n\nOnly letters and digits count, and case doesn't matter. `Race car!` is a palindrome. A line with no letters or digits at all counts as a palindrome.",
+  "tests": [
+    { "name": "simple", "input": "level\n", "expected": "YES\n" },
+    { "name": "case and punctuation", "input": "Race car!\n", "expected": "YES\n" },
+    { "name": "not one", "input": "rocket league\n", "expected": "NO\n" },
+    { "name": "several", "input": "A man, a plan, a canal: Panama\nwhat a save\n", "expected": "YES\nNO\n" },
+    { "name": "nothing to compare", "input": "?!\n", "expected": "YES\n", "hidden": true }
+  ],
+  "tutorNotes": "Trains char.IsLetterOrDigit, char.ToLowerInvariant, and either a two-pointer loop or building a filtered string and comparing with its reverse. A two-pointer approach without allocations is the strongest follow-up question. Watch for index out of range when both pointers skip non-alphanumeric characters without bounds checks."
+}

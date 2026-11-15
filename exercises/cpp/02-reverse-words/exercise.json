@@ -1,0 +1,17 @@
+{
+  "id": "02-reverse-words",
+  "title": "Reverse the Chat",
+  "language": "cpp",
+  "topic": "strings & vectors",
+  "difficulty": 2,
+  "starterFile": "main.cpp",
+  "prompt": "Someone typed their quick chat backwards. Fix it.\n\nInput: several lines of text. For **each line**, print the words in reverse order, separated by single spaces. Words are separated by one or more spaces, and extra spaces should not appear in the output. An empty line prints an empty line.\n\nExample: `wow   what a save` → `save a what wow`",
+  "tests": [
+    { "name": "basic", "input": "what a save\n", "expected": "save a what\n" },
+    { "name": "extra spaces", "input": "  wow   what a save  \n", "expected": "save a what wow\n" },
+    { "name": "multiple lines", "input": "nice shot\nclose one\n", "expected": "shot nice\none close\n" },
+    { "name": "empty line", "input": "gg\n\nez\n", "expected": "gg\n\nez\n" },
+    { "name": "single word", "input": "Calculated.\n", "expected": "Calculated.\n", "hidden": true }
+  ],
+  "tutorNotes": "Trains std::getline in a loop until EOF, splitting with std::istringstream >> word, std::vector, and reverse iteration. Common mistakes: using cin >> word (loses line boundaries), printing a trailing space, off-by-one when iterating backwards with an unsigned index (size_t i = v.size() - 1; i >= 0 is an infinite loop), empty-vector underflow. Idiomatic options: std::reverse or rbegin/rend."
+}

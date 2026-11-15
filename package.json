@@ -1,0 +1,98 @@
+{
+  "name": "socratic-dev",
+  "displayName": "Socratic Dev",
+  "description": "A Socratic AI tutor for C++ and C#: it asks guiding questions instead of writing your code.",
+  "version": "0.1.0",
+  "publisher": "socratic-dev",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Education",
+    "Programming Languages"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "socraticDev",
+          "title": "Socratic Dev",
+          "icon": "media/owl.svg"
+        }
+      ]
+    },
+    "views": {
+      "socraticDev": [
+        {
+          "type": "webview",
+          "id": "socraticDev.professor",
+          "name": "Professor"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "socraticDev.startExercise",
+        "title": "Socratic Dev: Start Exercise"
+      },
+      {
+        "command": "socraticDev.askProfessor",
+        "title": "Socratic Dev: Ask Professor"
+      },
+      {
+        "command": "socraticDev.runTests",
+        "title": "Socratic Dev: Run Tests"
+      },
+      {
+        "command": "socraticDev.setApiKey",
+        "title": "Socratic Dev: Set Anthropic API Key"
+      },
+      {
+        "command": "socraticDev.clearApiKey",
+        "title": "Socratic Dev: Clear Anthropic API Key"
+      }
+    ],
+    "configuration": {
+      "title": "Socratic Dev",
+      "properties": {
+        "socraticDev.model": {
+          "type": "string",
+          "default": "claude-opus-5-5",
+          "description": "Claude model the professor uses. Cheaper options: claude-sonnet-5-5, claude-haiku-5-5."
+        },
+        "socraticDev.effort": {
+          "type": "string",
+          "enum": ["low", "medium", "high"],
+          "default": "medium",
+          "description": "How hard the professor thinks before answering. Higher = slower and pricier."
+        },
+        "socraticDev.workspaceFolder": {
+          "type": "string",
+          "default": "",
+          "description": "Where exercise files are created. Empty = a 'socratic-exercises' folder in your home directory."
+        },
+        "socraticDev.cppCompiler": {
+          "type": "string",
+          "default": "g++",
+          "description": "C++ compiler command (g++ or clang++)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node --test out/test/*.test.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/vscode": "^1.95.0",
+    "typescript": "^5.9.3"
+  }
+}
